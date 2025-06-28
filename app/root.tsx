@@ -6,10 +6,20 @@ import {
   Scripts,
   ScrollRestoration,
 } from "react-router";
-import { Box, Code, ColorSchemeScript, Container, mantineHtmlProps, MantineProvider, Text, Title } from "@mantine/core";
+import {
+  Box,
+  Code,
+  ColorSchemeScript,
+  Container,
+  mantineHtmlProps,
+  MantineProvider,
+  Text,
+  Title,
+} from "@mantine/core";
 
 import type { Route } from "./+types/root";
 import "./app.css";
+import { theme } from "./theme";
 
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
@@ -22,7 +32,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
       </head>
       <body>
-        <MantineProvider>{children}</MantineProvider>
+        <MantineProvider theme={theme}>{children}</MantineProvider>
         <ScrollRestoration />
         <Scripts />
       </body>
@@ -51,11 +61,11 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
   }
 
   return (
-    <Container component='main' pt='xl' p='md' mx='auto'>
+    <Container component="main" pt="xl" p="md" mx="auto">
       <Title>{message}</Title>
       <Text>{details}</Text>
-      {(stack) && (
-        <Box component='pre' w='100%' style={{ overflowX: 'auto' }} p='md'>
+      {stack && (
+        <Box component="pre" w="100%" style={{ overflowX: "auto" }} p="md">
           <Code>{stack}</Code>
         </Box>
       )}
