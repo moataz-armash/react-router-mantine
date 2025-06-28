@@ -1,6 +1,7 @@
 import type { Route } from "./+types/home";
 import { Welcome } from "../welcome/welcome";
 import Navbar from "~/components/Navbar";
+import { Group } from "@mantine/core";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -10,5 +11,9 @@ export function meta({}: Route.MetaArgs) {
 }
 
 export default function Home() {
-  return <Navbar />;
+  return (
+    <Group display="flex" dir="column" py="30px" px="40px">
+      <Navbar />
+    </Group>
+  );
 }

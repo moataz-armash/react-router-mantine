@@ -18,20 +18,17 @@ const UserButton = forwardRef<HTMLButtonElement, UserButtonProps>(
     <UnstyledButton
       ref={ref}
       style={{
-        padding: "var(--mantine-spacing-md)",
+        height: 40,
+        padding: "8px 12px",
         backgroundColor: `${bgColor || "var(--mantine-color-brand-11)"}`,
         borderRadius: "var(--mantine-radius-lg)",
+        display: "flex",
+        alignItems: "center",
       }}
       {...others}
     >
       <Group align="center">
-        {avatar && (
-          <Avatar
-            src={avatar}
-            alt={name}
-           size={32}
-          />
-        )}
+        {avatar && <Avatar src={avatar} alt={name} size={32} />}
         <Text
           size="sm"
           fw={500}
