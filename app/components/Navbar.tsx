@@ -5,6 +5,7 @@ import DropdownMenu from "./DropdownMenu";
 import avatar from "../../public/avatar.png";
 import { IconSearch } from "@tabler/icons-react";
 import SearchIcon from "../../public/search-normal.png";
+import SearchInput from "./SearchInput";
 export default function Navbar() {
   return (
     <Flex
@@ -27,29 +28,7 @@ export default function Navbar() {
         <DropdownMenu name="Social Monitoring" />
       </Group>
       <Group>
-        <Input
-          placeholder="Search.."
-          leftSection={
-            <img
-              src={SearchIcon}
-              style={{
-                width: 16,
-                height: 16,
-              }}
-            />
-          }
-          styles={{
-            input: {
-              height: 40,
-              padding: "8px 32px",
-              width: 300,
-              boxShadow: "none",
-              outline: "none",
-              border: "none",
-              "::placeholder": { color: "var(--mantine-color-brand-9)" },
-            },
-          }}
-        />
+        <SearchInput />
         <DropdownMenu
           name="Ahmad Ali"
           textColor="var(--mantine-color-brand-7)"

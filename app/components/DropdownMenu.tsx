@@ -8,11 +8,24 @@ interface UserButtonProps extends React.ComponentPropsWithoutRef<"button"> {
   bgColor?: string;
   textColor?: string;
   avatar?: string;
+  size?: number;
+  gap?: number;
+  borderExists?: boolean;
 }
 
 const UserButton = forwardRef<HTMLButtonElement, UserButtonProps>(
   (
-    { name, icon, bgColor, textColor, avatar, ...others }: UserButtonProps,
+    {
+      name,
+      icon,
+      bgColor,
+      textColor,
+      avatar,
+      size = 32,
+      gap = 12,
+      borderExists,
+      ...others
+    }: UserButtonProps,
     ref
   ) => (
     <UnstyledButton
@@ -24,11 +37,14 @@ const UserButton = forwardRef<HTMLButtonElement, UserButtonProps>(
         borderRadius: "var(--mantine-radius-lg)",
         display: "flex",
         alignItems: "center",
+        border: borderExists
+          ? "1px solid var(--mantine-color-brand-6)"
+          : "none",
       }}
       {...others}
     >
-      <Group align="center">
-        {avatar && <Avatar src={avatar} alt={name} size={32} />}
+      <Group align="center" gap={gap}>
+        {avatar && <Avatar src={avatar} alt={name} size={size} />}
         <Text
           size="sm"
           fw={500}
@@ -54,6 +70,9 @@ interface DropdownMenuProps {
   bgColor?: string;
   textColor?: string;
   avatar?: string;
+  size?: number;
+  gap?: number;
+  borderExists?: boolean;
 }
 
 export default function DropdownMenu({
@@ -62,6 +81,9 @@ export default function DropdownMenu({
   bgColor,
   textColor,
   avatar,
+  size = 32,
+  gap = 12,
+  borderExists = false,
 }: DropdownMenuProps) {
   return (
     <Menu withArrow>
@@ -72,6 +94,9 @@ export default function DropdownMenu({
           bgColor={bgColor}
           textColor={textColor}
           avatar={avatar}
+          borderExists={borderExists}
+          size={size}
+          gap={gap}
         />
       </Menu.Target>
     </Menu>
