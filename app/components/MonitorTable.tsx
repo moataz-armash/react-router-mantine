@@ -7,7 +7,7 @@ export default function MonitorTable() {
     <Group
       bg="var(--mantine-color-brand-11)"
       w="100%"
-      p="12px"
+      p="24px"
       style={{ borderRadius: "var(--mantine-radius-lg)" }}
     >
       <TableHeader />
