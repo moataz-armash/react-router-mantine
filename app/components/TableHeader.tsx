@@ -23,8 +23,7 @@ export default function TableHeader() {
           </Title>
           <Title
             order={6}
-            style={{ color: "var(--mantine-color-brand-7)", fontWeight: 400 }}
-          >
+            style={{ color: "var(--mantine-color-brand-7)", fontWeight: 400 }}>
             To add Monitor
           </Title>
         </Stack>
@@ -47,11 +46,9 @@ export default function TableHeader() {
           <Button
             bg="var(--mantine-color-brand-10)"
             h={36}
-            w={120}
             radius="var(--mantine-radius-lg)"
             style={{ alignItems: "center", justifyContent: "center" }}
-            leftSection={<IconPlus size={16} />}
-          >
+            leftSection={<IconPlus size={16} />}>
             New Monitor
           </Button>
         </Link>

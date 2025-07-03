@@ -15,7 +15,11 @@ export default function NewMonitor() {
   return (
     <Group display="flex" dir="column" py="30px" px="40px">
       <Navbar />
-      <Title order={3} style={{ color: "var(--mantine-color-brand-0)",marginTop: "12px" }} >Create New Monitor</Title>
+      <Title
+        order={3}
+        style={{ color: "var(--mantine-color-brand-0)", marginTop: "12px" }}>
+        Create New Monitor
+      </Title>
       <NewMonitorForm />
       {/* <MonitorTable /> */}
     </Group>
