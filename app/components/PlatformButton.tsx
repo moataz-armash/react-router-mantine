@@ -1,51 +1,104 @@
-import { useState } from "react";
-import { Checkbox, Group, Stack, Text } from "@mantine/core";
-
-const data = [
-  {
-    name: "@mantine/core",
-    description: "Core components library: inputs, buttons, overlays, etc.",
-  },
-  {
-    name: "@mantine/hooks",
-    description: "Collection of reusable hooks for React applications.",
-  },
-  { name: "@mantine/notifications", description: "Notifications system" },
-];
+import React, { useState } from "react";
+import {
+  Container,
+  TextInput,
+  Textarea,
+  Title,
+  Group,
+  Button,
+  Paper,
+  Stack,
+  Text,
+} from "@mantine/core";
+import {
+  IconBrandX,
+  IconBrandFacebook,
+  IconBrandInstagram,
+} from "@tabler/icons-react";
+import facebook from "../../public/facebook.png";
+import twitter from "../../public/twitter.png";
+import instagram from "../../public/instagram.png";
 
 export default function PlatformButton() {
-  const [value, setValue] = useState<string[]>([]);
+  const [selectedPlatforms, setSelectedPlatforms] = useState([]);
 
-  const cards = data.map((item) => (
-    <Checkbox.Card
-      // className={classes.root}
-      radius="md"
-      value={item.name}
-      key={item.name}>
-      <Group wrap="nowrap" align="flex-start">
-        <div>
-          <Text>{item.name}</Text>
-          <Text>{item.description}</Text>
-        </div>
-      </Group>
-    </Checkbox.Card>
-  ));
+  const platforms = [
+    {
+      id: "x",
+      name: "X",
+      img: twitter,
+      color: "#000000",
+    },
+    {
+      id: "facebook",
+      name: "Facebook",
+      img: facebook,
+      color: "#1877F2",
+    },
+    {
+      id: "instagram",
+      name: "Instagram",
+      img: instagram,
+      color: "#E4405F",
+    },
+  ];
+
+  const togglePlatform = (platformId) => {
+    setSelectedPlatforms((prev) =>
+      prev.includes(platformId)
+        ? prev.filter((id) => id !== platformId)
+        : [...prev, platformId]
+    );
+  };
 
   return (
-    <>
-      <Checkbox.Group
-        value={value}
-        onChange={setValue}
-        label="Pick packages to install"
-        description="Choose all packages that you will need in your application">
-        <Stack pt="md" gap="xs">
-          {cards}
-        </Stack>
-      </Checkbox.Group>
+    <Group>
+      {platforms.map((platform) => {
+        const isSelected = selectedPlatforms.includes(platform.id);
 
-      <Text fz="xs" mt="md">
-        CurrentValue: {value.join(", ") || "–"}
-      </Text>
-    </>
+        return (
+          <Button
+            key={platform.id}
+            variant="outline"
+            leftSection={
+              <img
+                src={platform.img}
+                height={24}
+                width={24}
+                style={{
+                  opacity: isSelected ? 1 : 0.5,
+                  filter: isSelected ? "none" : "grayscale(100%)",
+                }}
+              />
+            }
+            onClick={() => togglePlatform(platform.id)}
+            size="md"
+            style={{
+              backgroundColor: "transparent",
+              border: "none",
+              outline: isSelected
+                ? `2px solid var(--mantine-color-brand-2)`
+                : "none",
+              color: isSelected
+                ? "var(--mantine-color-brand-0)"
+                : "var(--mantine-color-brand-7)",
+              "&:hover": {
+                backgroundColor: `color-mix(in srgb, ${platform.color} 10%, transparent)`,
+              },
+            }}
+            styles={{
+              root: {
+                "&:hover": {
+                  backgroundColor: isSelected
+                    ? platform.color
+                    : `${platform.color}10`,
+                },
+              },
+            }}>
+            {platform.name}
+          </Button>
+        );
+      })}
+    </Group>
   );
 }
