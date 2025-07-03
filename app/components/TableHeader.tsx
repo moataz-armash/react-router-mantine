@@ -11,6 +11,7 @@ import SearchInput from "./SearchInput";
 import DropdownMenu from "./DropdownMenu";
 import calendar from "../../public/calendar.png";
 import { IconPlus } from "@tabler/icons-react";
+import { Link } from "react-router";
 
 export default function TableHeader() {
   return (
@@ -42,16 +43,18 @@ export default function TableHeader() {
           size={24}
           gap={8}
         />
-        <Button
-          bg="var(--mantine-color-brand-10)"
-          h={36}
-          w={120}
-          radius="var(--mantine-radius-lg)"
-          style={{ alignItems: "center", justifyContent: "center" }}
-          leftSection={<IconPlus size={16} />}
-        >
-          New Monitor
-        </Button>
+        <Link to="/monitor/new">
+          <Button
+            bg="var(--mantine-color-brand-10)"
+            h={36}
+            w={120}
+            radius="var(--mantine-radius-lg)"
+            style={{ alignItems: "center", justifyContent: "center" }}
+            leftSection={<IconPlus size={16} />}
+          >
+            New Monitor
+          </Button>
+        </Link>
       </Group>
     </Flex>
   );
