@@ -1,4 +1,5 @@
 import { Group, Stack, Switch, Title } from "@mantine/core";
+import { useState } from "react";
 
 export default function SwitchField({
   title,
@@ -7,6 +8,7 @@ export default function SwitchField({
   title: string;
   description: string;
 }) {
+  const [checked, setChecked] = useState(true);
   return (
     <Group align="center" justify="space-between" mb={16}>
       <Stack gap={4}>
@@ -27,7 +29,23 @@ export default function SwitchField({
           {description}
         </Title>
       </Stack>
-      <Switch color="var(--mantine-color-brand-9)" checked />
+      <Switch
+        checked={checked}
+        onChange={(event) => setChecked(event.currentTarget.checked)}
+        styles={(theme) => ({
+          track: {
+            backgroundColor: checked
+              ? theme.colors.brand[9]
+              : theme.colors.brand[6],
+          },
+          thumb: {
+            backgroundColor: "#fff",
+            border: `2px solid ${
+              checked ? theme.colors.brand[9] : theme.colors.brand[6]
+            }`,
+          },
+        })}
+      />
     </Group>
   );
 }
