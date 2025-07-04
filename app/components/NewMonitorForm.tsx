@@ -162,13 +162,16 @@ export default function NewMonitorForm() {
       </Grid>
       <SwitchField
         title="Exclude Quotes"
-        description="ignore tweets that quote another tweet"
+        description="Ignore tweets that quote another tweet"
       />
       <SwitchField
         title="Exclude Retweets"
-        description="ignore retweet posts"
+        description="Ignore retweet posts"
       />
-      <SwitchField title="Exclude Quotes" description="ignore retweet posts" />
+      <SwitchField
+        title="Exclude Quotes"
+        description="Ignore retweeted posts"
+      />
       <Group justify="flex-end" gap={8}>
         <Button
           bg="transparent"

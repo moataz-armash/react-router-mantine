@@ -1,4 +1,12 @@
-import { Button, Group, Stack, TextInput, Title } from "@mantine/core";
+import {
+  Button,
+  Group,
+  rgba,
+  Stack,
+  TextInput,
+  Title,
+  useMantineTheme,
+} from "@mantine/core";
 import { IconPlus, IconX } from "@tabler/icons-react";
 import { useState } from "react";
 
@@ -19,6 +27,7 @@ export default function TagsAdditional({
   const deleteTag = (index: number) => {
     setTags((prev) => prev.filter((_, i) => i !== index));
   };
+  const theme = useMantineTheme();
   return (
     <Stack>
       <Title
@@ -35,6 +44,7 @@ export default function TagsAdditional({
         styles={{
           input: {
             backgroundColor: "var(--mantine-color-brand-15)",
+            borderRadius: "var(--mantine-radius-lg)",
             border: "none",
           },
         }}
@@ -55,7 +65,11 @@ export default function TagsAdditional({
         {tags.map((tag, index) => (
           <Button
             key={index}
-            style={{ color: "var(--mantine-color-brand-9)", fontWeight: 400 }}
+            style={{
+              color: "var(--mantine-color-brand-9)",
+              fontWeight: 400,
+              border: `1px solid ${rgba(theme.colors.brand[9], 0.15)}`,
+            }}
             leftSection={
               <IconX
                 color="var(--mantine-color-brand-9)"

@@ -64,7 +64,7 @@ export default function PlatformButton() {
             onClick={() => togglePlatform(platform.id)}
             size="md"
             style={{
-              backgroundColor: "transparent",
+              backgroundColor: "var(--mantine-color-brand-15)",
               border: "none",
               outline: isSelected
                 ? `2px solid var(--mantine-color-brand-2)`
@@ -75,6 +75,7 @@ export default function PlatformButton() {
               "&:hover": {
                 backgroundColor: `color-mix(in srgb, ${platform.color} 10%, transparent)`,
               },
+              fontWeight: 400,
             }}
             styles={{
               root: {
