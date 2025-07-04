@@ -24,6 +24,7 @@ import {
   IconSettings,
   IconTrash,
 } from "@tabler/icons-react";
+import SwitchField from "./SwitchField";
 
 export default function NewMonitorForm() {
   const languages = ["English", "Arabic", "Turkish"];
@@ -159,6 +160,36 @@ export default function NewMonitorForm() {
           </Menu>
         </Grid.Col>
       </Grid>
+      <SwitchField
+        title="Exclude Quotes"
+        description="ignore tweets that quote another tweet"
+      />
+      <SwitchField
+        title="Exclude Retweets"
+        description="ignore retweet posts"
+      />
+      <SwitchField title="Exclude Quotes" description="ignore retweet posts" />
+      <Group justify="flex-end" gap={8}>
+        <Button
+          bg="transparent"
+          style={{
+            border: "1px solid var(--mantine-color-brand-6)",
+            borderRadius: "var(--mantine-radius-lg)",
+            color: "var(--mantine-color-brand-1)",
+            fontWeight: 500,
+          }}>
+          Cancel
+        </Button>
+        <Button
+          bg="var(--mantine-color-brand-10)"
+          style={{
+            borderRadius: "var(--mantine-radius-lg)",
+            color: "var(--mantine-color-brand-11)",
+            fontWeight: 500,
+          }}>
+          Save Monitor
+        </Button>
+      </Group>
     </Stack>
   );
 }
