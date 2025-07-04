@@ -8,10 +8,10 @@ export default function LabelInput({
   placeholder: string;
 }) {
   return (
-    <Stack w="48%" gap={4}>
+    <Stack>
       <InputLabel
         color="var(--mantine-color-brand-0)"
-        style={{ fontWeight: 500 }}>
+        style={{ fontWeight: 500, fontSize: "var(--mantine-size-md)" }}>
         {name}
       </InputLabel>
       <TextInput

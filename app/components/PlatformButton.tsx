@@ -1,26 +1,12 @@
-import React, { useState } from "react";
-import {
-  Container,
-  TextInput,
-  Textarea,
-  Title,
-  Group,
-  Button,
-  Paper,
-  Stack,
-  Text,
-} from "@mantine/core";
-import {
-  IconBrandX,
-  IconBrandFacebook,
-  IconBrandInstagram,
-} from "@tabler/icons-react";
+import { useEffect, useState } from "react";
+import { Group, Button } from "@mantine/core";
+
 import facebook from "../../public/facebook.png";
 import twitter from "../../public/twitter.png";
 import instagram from "../../public/instagram.png";
 
 export default function PlatformButton() {
-  const [selectedPlatforms, setSelectedPlatforms] = useState([]);
+  const [selectedPlatforms, setSelectedPlatforms] = useState<string[]>([]);
 
   const platforms = [
     {
@@ -43,7 +29,11 @@ export default function PlatformButton() {
     },
   ];
 
-  const togglePlatform = (platformId) => {
+  useEffect(() => {
+    togglePlatform("x");
+  }, []);
+
+  const togglePlatform = (platformId: string = "x") => {
     setSelectedPlatforms((prev) =>
       prev.includes(platformId)
         ? prev.filter((id) => id !== platformId)
@@ -63,8 +53,8 @@ export default function PlatformButton() {
             leftSection={
               <img
                 src={platform.img}
-                height={24}
-                width={24}
+                height={platform.id === "instagram" ? 36 : 20}
+                width={platform.id === "instagram" ? 36 : 20}
                 style={{
                   opacity: isSelected ? 1 : 0.5,
                   filter: isSelected ? "none" : "grayscale(100%)",
